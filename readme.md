@@ -24,3 +24,5 @@ This project is made as a response to Forex IMF Test. It contains the functional
 6. You can try inserting, migrating, and calculating bonuses for your participants.
 
 # Expected Output
+
+![alt text](https://raw.githubusercontent.com/daltera/MLMChallenge/master/assets/demo/demo.png)
