@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>Muhammad Al Terra · ITB Graduate</title>
+    <link rel="icon" href="assets/45704.jpg">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    
+
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .prompt-rect{
+        transition: all 0.4s;
+      }
+      .prompt-rect:hover{
+        opacity: 1;
+        transition: all 0.4s;
+        cursor: pointer;
+      }
+
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="https://github.com/daltera" target="_blank"><i style="font-size: 1.5rem; color: white; margin: 8px" class="bi bi-github"></i> @daltera</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link active"href="https://www.linkedin.com/in/muhammad-al-terra-b87a891a0/" target="_blank"><i style="font-size: 1.5rem;color: white; margin: 8px" class="bi bi-linkedin"></i> Muhammad Al Terra</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="https://www.instagram.com/zipizi.space/" target="_blank"><i style="font-size: 1.5rem;color: white; margin: 8px" class="bi bi-instagram"></i> @zipizi.space</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+  </div>
+
+
+  <div class="container marketing">
+
+    <div>Perhitungan Bonus</div>
+    <div style="display: flex; column-gap: 10px; margin: 20px">
+      <select class="form-select bonus-selector" aria-label="Default select example">
+        <option class="bonus-options">Select Member ID</option>
+      </select>
+      <button onclick="getBonus()">Calculate=</button>
+      <input disabled class="bonus-field">
+    </div>
+    <div>Registrasi ID Member Baru</div>
+    <div style="display: flex; column-gap: 10px; margin: 20px;">
+      <input class="member-initial" placeholder="Inisial member baru">
+      <select class="form-select member-parent-selector" aria-label="Default select example">
+        <option class="parent-options" value="1">One</option>
+      </select>
+      <button onclick="registerMember()">Register</button>
+      <input disabled class="newId-field">
+    </div>
+    <div>Migrasi member/Pindah Parent</div>
+    <div style="display: flex; column-gap: 10px; margin: 20px">
+      <select onchange="updateAvailableParents()" class="form-select member-update-selector" aria-label="Default select example">
+        <option value="1" class="update-options">One</option>
+      </select>
+      <select disabled class="form-select update-parent-selector" aria-label="Default select example">
+        <option value="1" class="parent-update-options">Pilih Member Terlebih Dahulu</option>
+      </select>
+      <button onclick="updateMember()">Migrate</button>
+      <input disabled class="newLevel-field">
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <button onclick="window.location.reload()" class="refresh-button">Refresh Graph</button>
+    </div>
+
+        <!-- Three columns of text below the carousel -->
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+    </figure>
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+  </footer>
+</main>
+
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/organization.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="scripts/figurecharter.js"></script>
+        
+
+      
+  </body>
+</html>
